@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!-- saved from url=(0145)file:///C:/Users/hgh70/OneDrive/%EB%B0%94%ED%83%95%20%ED%99%94%EB%A9%B4/%EB%B0%94%ED%83%95%20%EC%9E%84%EC%8B%9C/%EA%B3%84%EC%82%B0%EA%B8%B01.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자동 견적 계산기</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .form-group button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form-group button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>자동 견적 계산기</h2>
+        <div class="form-group">
+            <label for="length">가로 (단위: cm):</label>
+            <input type="number" id="length" placeholder="가로를 입력하세요">
+        </div>
+        <div class="form-group">
+            <label for="width">세로 (단위: cm):</label>
+            <input type="number" id="width" placeholder="세로를 입력하세요">
+        </div>
+        <div class="form-group">
+            <label for="height">높이 (단위: cm):</label>
+            <input type="number" id="height" placeholder="높이를 입력하세요">
+        </div>
+        <div class="form-group">
+            <button onclick="calculateEstimate()">총합 계산</button>
+        </div>
+        <div class="result" id="result">총합: 31,900 원</div>
+    </div>
+
+    <script>
+        function calculateEstimate() {
+            const length = parseFloat(document.getElementById('length').value);
+            const width = parseFloat(document.getElementById('width').value);
+            const height = parseFloat(document.getElementById('height').value);
+
+            if (isNaN(length) || isNaN(width) || isNaN(height)) {
+                alert('가로, 세로, 높이 값을 올바르게 입력하세요.');
+                return;
+            }
+
+            // 총합 계산
+            const totalSum = ((length*height*2 + width*height*2 +length*width*2)*5)+4900 ;
+
+            document.getElementById('result').textContent = `총합: ${totalSum.toLocaleString()} 원`;
+        }
+    </script>
+
+
+</body></html>
